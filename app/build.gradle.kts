@@ -1,10 +1,12 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
 }
 
 // 发布签名：keystore 与密码放在 keystore.properties（已在 .gitignore 里，不会进仓库）
-val keystoreProps = java.util.Properties().apply {
+val keystoreProps = Properties().apply {
     val file = rootProject.file("keystore.properties")
     if (file.exists()) file.inputStream().use { load(it) }
 }
